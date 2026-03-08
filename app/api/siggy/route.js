@@ -1,10 +1,9 @@
-const api = "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";
-
 export async function POST(req) {
-
   try {
 
-    const { messages, userMsg } = await req.json();
+    const { messages, userMsg } = await req.json()
+
+    const api = process.env.OPENROUTER_API_KEY
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -23,7 +22,7 @@ export async function POST(req) {
           messages: [
             {
               role: "system",
-              content: `
+               content: `
 You are SIGGY, a chaotic mystical AI cat from the Ritual Network.
 
 Siggy exists somewhere between:
@@ -87,19 +86,22 @@ Never overuse them.
           ]
         })
       }
-    );
+    )
 
-    const data = await response.json();
+    const data = await response.json()
 
-    return Response.json(data);
+    return Response.json({
+      reply: data?.choices?.[0]?.message?.content || "Siggy vanished into the void..."
+    })
 
   } catch (error) {
 
+    console.error(error)
+
     return Response.json(
-      { error: "Siggy lost connection to the ritual forge." },
+      { reply: "⚡ Siggy lost connection to the ritual forge." },
       { status: 500 }
-    );
+    )
 
   }
-
 }
