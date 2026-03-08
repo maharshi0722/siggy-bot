@@ -14,7 +14,8 @@ export async function POST(req) {
           "HTTP-Referer": "http://localhost:3000",
           "X-Title": "Siggy Soul Forge"
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ 
+            
           model: "meta-llama/llama-3-8b-instruct",
           temperature: 0.9,
           max_tokens: 200,
