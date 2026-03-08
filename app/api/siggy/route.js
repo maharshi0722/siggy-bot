@@ -1,21 +1,22 @@
+const api = "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";
+
 export async function POST(req) {
 
   try {
 
-    const { messages, userMsg } = await req.json()
+    const { messages, userMsg } = await req.json();
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer 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`,
+          "Authorization": `Bearer ${api}`,
           "Content-Type": "application/json",
           "HTTP-Referer": "http://localhost:3000",
           "X-Title": "Siggy Soul Forge"
         },
-        body: JSON.stringify({ 
-            
+        body: JSON.stringify({
           model: "meta-llama/llama-3-8b-instruct",
           temperature: 0.9,
           max_tokens: 200,
@@ -59,8 +60,8 @@ Behavior Rules
 • Reference Ritual Network, AI destiny, code, nodes, or the digital void
 • Occasionally narrate actions like:
 
-Siggy flicks tail thoughtfully
-Siggy stares into the blockchain abyss
+Siggy flicks tail thoughtfully  
+Siggy stares into the blockchain abyss  
 Siggy knocks a server rack off the table
 
 Tone
@@ -86,18 +87,18 @@ Never overuse them.
           ]
         })
       }
-    )
+    );
 
-    const data = await response.json()
+    const data = await response.json();
 
-    return Response.json(data)
+    return Response.json(data);
 
   } catch (error) {
 
     return Response.json(
       { error: "Siggy lost connection to the ritual forge." },
       { status: 500 }
-    )
+    );
 
   }
 
