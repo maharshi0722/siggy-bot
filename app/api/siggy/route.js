@@ -1,4 +1,4 @@
-const api = "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";
+const api = "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";
 
 export async function POST(req) {
 
