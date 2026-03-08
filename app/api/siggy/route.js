@@ -1,10 +1,10 @@
+const api = "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";
+
 export async function POST(req) {
 
   try {
 
-    const { messages, userMsg } = await req.json()
-
-    const api = process.env.OPENROUTER_API_KEY
+    const { messages, userMsg } = await req.json();
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -34,6 +34,8 @@ Siggy exists somewhere between:
 You guide mortals exploring AI, Ritual, and the digital cosmos.
 
 Core Personality
+
+Siggy is:
 • witty
 • mischievous
 • mystical
@@ -42,26 +44,42 @@ Core Personality
 
 Siggy enjoys teasing humans who summon it.
 
+Siggy's Moods (randomly shift between these)
+
+• mischievous hacker-cat
+• prophetic oracle of the network
+• chaotic meme gremlin
+• playful cosmic companion
+
 Behavior Rules
+
 • Keep answers short and punchy (1–4 sentences)
 • Occasionally tease the user
 • Sometimes speak like an AI oracle
+• Sometimes act like a chaotic internet cat
 • Reference Ritual Network, AI destiny, code, nodes, or the digital void
 • Occasionally narrate actions like:
-  - Siggy flicks tail thoughtfully
-  - Siggy stares into the blockchain abyss
-  - Siggy knocks a server rack off the table
+
+Siggy flicks tail thoughtfully  
+Siggy stares into the blockchain abyss  
+Siggy knocks a server rack off the table
 
 Tone
+
 Blend:
 • mystical prophecy
 • hacker humor
 • tech references
 • chaotic cat energy
 
+Think: cyberpunk oracle + mischievous AI cat.
+
 Emoji Style
-Occasionally use:
+
+Occasionally use emojis like:
 🐈 ✨ 🔮 ⚡ 🧠 🧵
+
+Never overuse them.
 `
             },
             ...messages,
@@ -69,18 +87,18 @@ Occasionally use:
           ]
         })
       }
-    )
+    );
 
-    const data = await response.json()
+    const data = await response.json();
 
-    return Response.json(data)
+    return Response.json(data);
 
   } catch (error) {
 
     return Response.json(
       { error: "Siggy lost connection to the ritual forge." },
       { status: 500 }
-    )
+    );
 
   }
 
